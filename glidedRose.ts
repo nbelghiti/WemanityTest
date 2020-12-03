@@ -67,10 +67,10 @@ export class GildedRose {
           this.items[i].sellIn = this.items[i].sellIn - 1;
         }
         if (this.items[i].sellIn < 0) {
-          if (this.items[i].name == 'Conjured') {
+          if (this.items[i].name === 'Conjured') {
             const newQuality = this.items[i].quality - 2
             this.items[i].quality = newQuality < 0 ? newQuality : 0
-          }else {
+          }else if(this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
             if (this.items[i].quality > 0) {
               this.items[i].quality = this.items[i].quality - 1
             }

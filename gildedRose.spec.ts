@@ -67,6 +67,27 @@ describe('GildedRose', () => {
       let expectedBackstage = helper.getItems('Backstage passes to a TAFKAL80ETC concert', 4, 43);
       let newBackstage = gildedRose.updateQuality();
       expect(newBackstage).toEqual(expectedBackstage);
+    });  
+    it("test Backstage element sellIn < 0", () => {
+      gildedRose.items =[]
+      gildedRose.items = helper.getItems('Backstage passes to a TAFKAL80ETC concert', -1, 40);
+      let expectedBackstage = helper.getItems('Backstage passes to a TAFKAL80ETC concert', -2, 0);
+      let newBackstage = gildedRose.updateQuality();
+      expect(newBackstage).toEqual(expectedBackstage);
+    });
+    it("test Conjured element sellIn < 0", () => {
+      gildedRose.items =[]
+      gildedRose.items = helper.getItems('Conjured', -1, 40);
+      let expectedConjured = helper.getItems('Conjured', -2, 0);
+      let newConjured = gildedRose.updateQuality()
+      expect(newConjured).toEqual(expectedConjured);
+    });
+    it("test Sulfuras element  sellIn < 0", () => {
+      gildedRose.items =[]
+      gildedRose.items = helper.getItems('Sulfuras, Hand of Ragnaros', -2, 40);
+      let expectedSulfuras = helper.getItems('Sulfuras, Hand of Ragnaros', -2, 40);
+      let newSulfuras = gildedRose.updateQuality();
+      expect(newSulfuras).toEqual(expectedSulfuras);
     });
   })
 });
